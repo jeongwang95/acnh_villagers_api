@@ -1,0 +1,80 @@
+/* NavBar */
+.ct-nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 4vw 0 4vw;
+}
+
+.ct-nav img {
+    height: 5vh;
+}
+
+.ct-nav .logo a {
+    text-decoration: none;
+}
+
+ul#horizontal-list{
+    list-style: none;
+}
+
+ul#horizontal-list li, ul#horizontal-list a{
+    display:inline;
+    text-decoration: none;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    align-items: center;
+}
+
+/* Hero */
+.hero-section {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.767), rgba(0, 0, 0, 0)), url("../images/hero.jpg");
+
+    height: 50vh;
+
+    background-position: 0 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero {
+    padding: 12vh 0 0 4vw;
+}
+
+.hero ul{
+    list-style: none;
+    padding-left: 0;
+    padding-top: 2vh;
+}
+
+.hero li {
+    display: inline;
+    padding-right: 1vw;
+}
+
+.hero h1, .hero h4 {
+    padding-bottom: 2vh;
+}
+
+/* Modal */
+fieldset {
+    margin-bottom: 1vh;
+}
+
+/* profile.html flash msg */
+.msg {
+    border-radius: 10px;
+}
+
+.flash-msg {
+    margin-bottom: 1vh;
+}
+
+/* profile/browse body */
+.main h1, .main h5 {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.card {
+    margin-top: 5vh;
+}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'email-exists' %}
+                <div class="container flash-msg">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 text-xl-center bg-danger text-white msg">
+                            {{ msg }}
+                            <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<main class="container">
+    <div class="row justify-content-center">
+        <aside class="col-12 col-md-6 bg-white p-3 border">            
+            <h2 class="text-center text-success font-monospace fw-bold sign">CREATE YOUR ACCOUNT</h2>
+            <p  class="text-center">Already have an account? Sign in <a href="{{ url_for('auth.signin') }}" class="text-success">HERE</a></p>
+            {% include 'signup_form.html' %}
+        </aside>
+    </div>
+</main>
+
+<audio autoplay>
+    <source src="https://acnhapi.com/v1/music/95" type="audio/ogg">
+    <source src="https://acnhapi.com/v1/music/95" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+{% endblock content %}

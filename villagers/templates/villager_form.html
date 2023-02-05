@@ -1,0 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="addVillager" tabindex="-1" aria-labelledby="addVillagerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-success" id="addVillagerLabel">Add Villager:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method = "POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <div class="modal-body">
+                        <fieldset id="name-field">
+                            {{ form.name.label }}
+                            {{ form.name(class = "form-control", placeholder = "Enter name") }}
+                        </fieldset> 
+                        <fieldset id="species-field">
+                            {{ form.species.label }}
+                            {{ form.species(class = "form-control", placeholder = "Enter species") }}
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        {{ form.submit_button(class = "btn btn-success btn-block") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

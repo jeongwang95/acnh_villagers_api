@@ -1,0 +1,82 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<!-- flash error message, if we cannot access ACNH API (3rd party API) -->
+<!-- only way this message will flash is if ACNH API is no longer available -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'bad-request' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if user inputed an invalid villager -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'fail-search' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<header class="hero-section">
+    <div class="hero">
+        <h1 class="text-success">I'm so hyped to see you {{ current_user.first_name.title() }}!</h1>
+        <h4 class="text-success text-opacity-75">View your current villagers in your island below.</h4>
+        <p>Start or continue to add villagers to your collection, or browse to discover new villagers.</p>
+        <ul>
+            <li><button type="button" class="btn btn-success font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#addVillager">ADD VILLAGER</button></li>
+            <li><a href="{{ url_for('site.browse') }}"><button type="button" class="btn btn-outline-success font-monospace fw-bold">BROWSE VILLAGERS</button></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container main">
+    <h1 class="text-success">Your Villagers:</h3>
+    <h5>Current number of villagers: {{ count }}</h6>
+
+    <div class="row justify-content-center">
+        {% for villager in villagers %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src= "{{ villager.image }}"alt="Car Image">
+                
+                <div class="card-body">
+                    <h3 class="card-title">{{ villager.name }}</h3>
+                    <p>Personality: {{ villager.personality }} </p>
+                    <p>Species: {{ villager.species }}</p>
+                    <p>Gender: {{ villager.gender }}</p>
+                    <p>Birthday: {{ villager.birthday }}</p>
+                    <p>Hobby: {{ villager.hobby }}</p>
+                    <p>Catch Phrase: {{ villager.phrase }}</p>
+                </div>     
+            </div>        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'villager_form.html' %}
+
+
+{% endblock content %}

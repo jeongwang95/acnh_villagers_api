@@ -1,0 +1,37 @@
+/* base.html */
+
+body {
+    background-image: url("../images/background.jpeg");
+    background-size: cover;
+}
+
+.hero1 {
+    margin-top: 15vh;
+}
+
+.hero2 {
+    margin-bottom: 15vh;
+}
+
+
+/* signin/signup */
+fieldset, .sign {
+    margin: 2vh 2vw 2vh 2vw
+}
+
+.submit-btn {
+    text-align: end;
+    margin: 3vh 2vw 3vh 2vw
+}
+
+aside {
+    border-radius: 5%;
+}
+
+.msg {
+    border-radius: 10px;
+}
+
+.flash-msg {
+    margin-bottom: 1vh;
+}

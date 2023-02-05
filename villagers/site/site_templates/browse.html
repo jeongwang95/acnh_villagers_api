@@ -1,0 +1,32 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<div class="container main">
+    <h1 class="text-success">Animal Crossing Villagers:</h1>
+
+    <div class="row">
+        {% for villagers in species.values() %}
+            {% for villager in villagers %}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src= "{{ villager['image_uri'] }}"alt="Car Image">
+                    
+                    <div class="card-body">
+                        <h3 class="card-title">{{ villager['name']['name-USen'] }}</h3>
+                        <p>Personality: {{ villager['personality'] }} </p>
+                        <p>Species: {{ villager['species'] }}</p>
+                        <p>Gender: {{ villager['gender'] }}</p>
+                        <p>Birthday: {{ villager['birthday-string'] }}</p>
+                        <p>Hobby: {{ villager['hobby'] }}</p>
+                        <p>Catch Phrase: {{ villager['catch-phrase'] }}</p>
+                    </div>     
+                </div>        
+            </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

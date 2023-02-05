@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="../static/css/nav.css">
+<title>ACNH: My Villagers</title>
+<link rel="icon" href="../static/images/ac_logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav class="ct-nav">
+        <div class="logo">
+            <a href="{{  url_for('site.profile') }}" class="text-success font-monospace fw-bold"><img src="../static/images/ac_logo.png" alt="AC Logo"> ACNH: My Villagers</a>
+        </div>
+
+        <div>
+            <ul id="horizontal-list">
+                <li><a href="{{ url_for('site.profile') }}" class="text-success font-monospace fw-bold">HOME</a></li>
+                <li><a href="{{ url_for('site.browse') }}" class="text-success font-monospace fw-bold">BROWSE</a></li>
+                <li><a href="{{ url_for('auth.logout') }}"><button type="button" class="btn btn-success font-monospace fw-bold">LOGOUT</button></a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- create space for content from other html pages -->
+{% block content %}
+
+{% endblock content %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

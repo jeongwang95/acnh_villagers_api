@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- login failed message -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'auth-fail' %}
+                <div class="container flash-msg">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 text-xl-center bg-danger text-white msg">
+                            {{ msg }}
+                            <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- account creation successful message -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'user-created' %}
+                <div class="container flash-msg">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 text-xl-center bg-success text-white msg">
+                            {{ msg }}
+                            <button type="button" class="btn btn-success" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<main class="container">
+    <div class="row justify-content-center">
+        <aside class="col-12 col-md-6 bg-white p-3 border">            
+            <h2 class="text-center text-success font-monospace fw-bold sign">HELLO AGAIN!</h2>
+            <p  class="text-center">If you don't have an account, create your account <a href="{{ url_for('auth.signup') }}" class="text-success">HERE</a></p>
+            {% include 'signin_form.html' %}
+        </aside>
+    </div>
+</main>
+
+<audio autoplay>
+    <source src="https://acnhapi.com/v1/music/4" type="audio/ogg">
+    <source src="https://acnhapi.com/v1/music/4" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+{% endblock content %}
