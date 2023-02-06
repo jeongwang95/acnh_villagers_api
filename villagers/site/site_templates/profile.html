@@ -21,7 +21,25 @@
     {% endif %}
 {% endwith %}
 
-<!-- message will flash if user inputed an invalid villager -->
+<!-- message will flash if user inputed an alreadt existing villager -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'repeat' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if user inputed an invalid villager when adding -->
 {% with messages = get_flashed_messages(with_categories = True) %}
     {% if messages %}
         {% for cat, msg in messages %}
@@ -64,11 +82,22 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ villager.name }}</h3>
                     <p>Personality: {{ villager.personality }} </p>
-                    <p>Species: {{ villager.species }}</p>
-                    <p>Gender: {{ villager.gender }}</p>
-                    <p>Birthday: {{ villager.birthday }}</p>
-                    <p>Hobby: {{ villager.hobby }}</p>
-                    <p>Catch Phrase: {{ villager.phrase }}</p>
+                    <p class="card-option">
+                        <a class="text-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            More Info
+                        </a>
+                        <button type="button" class="btn btn-success font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#removeVillager">REMOVE</button>
+                    </p>
+
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <p>Species: {{ villager.species }}</p>
+                            <p>Gender: {{ villager.gender }}</p>
+                            <p>Birthday: {{ villager.birthday }}</p>
+                            <p>Hobby: {{ villager.hobby }}</p>
+                            <p>Catch Phrase: {{ villager.phrase }}</p>              
+                        </div>
+                    </div>
                 </div>     
             </div>        
         </div>
@@ -77,6 +106,7 @@
 </div>
 
 {% include 'villager_form.html' %}
+{% include 'remove_form.html' %}
 
 
 {% endblock content %}

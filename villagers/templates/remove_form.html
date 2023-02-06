@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="removeVillager" tabindex="-1" aria-labelledby="removeVillagerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-success" id="removeVillagerLabel">Remove Villager:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method = "DELETE">
+                {{ remove.hidden_tag() }}
+                <div class="form-group">
+                    <div class="modal-body">
+                        Write the name of the villager to confirm.
+                        <fieldset id="name-field">
+                            {{ remove.name(class = "form-control", placeholder = "Enter name") }}
+                        </fieldset> 
+                    </div>
+                    <div class="modal-footer">
+                        {{ remove.submit_button(class = "btn btn-success btn-block") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

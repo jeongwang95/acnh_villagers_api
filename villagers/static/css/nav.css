@@ -77,4 +77,10 @@ fieldset {
 
 .card {
     margin-top: 5vh;
+    text-align: center;
+}
+
+.card-option {
+    display: flex;
+    justify-content: space-evenly;
 }

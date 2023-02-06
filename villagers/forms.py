@@ -19,6 +19,6 @@ class VillagerForm(FlaskForm):
     species = StringField('Species', validators = [DataRequired()])
     submit_button = SubmitField('ADD')
 
-class SearchForm(FlaskForm):
-    search = StringField('Species', validators= [DataRequired()])
-    submit_button = SubmitField('SEARCH')  
+class RemoveForm(FlaskForm):
+    name = StringField('Name', validators= [DataRequired()])
+    submit_button = SubmitField('REMOVE')  
