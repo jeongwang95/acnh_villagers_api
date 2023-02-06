@@ -21,7 +21,7 @@
     {% endif %}
 {% endwith %}
 
-<!-- message will flash if user inputed an alreadt existing villager -->
+<!-- message will flash if user inputed an already existing villager -->
 {% with messages = get_flashed_messages(with_categories = True) %}
     {% if messages %}
         {% for cat, msg in messages %}
@@ -31,6 +31,42 @@
                     <div class="col-12 text-xl-center bg-danger text-white msg">
                         {{ msg }}
                         <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if user could not remove a villager -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'remove-fail' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if user successfully removed a villager -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'remove-success' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-success text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-success" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
                     </div>
                 </div>
             </div>

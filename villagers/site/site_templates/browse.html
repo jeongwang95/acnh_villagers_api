@@ -2,6 +2,60 @@
 
 {% block content %}
 
+<!-- message will flash if user inputed an alreadt existing villager -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'repeat' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if user inputed an invalid villager when adding -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'fail-search' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-danger text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-danger" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- message will flash if the user successfully added a villager  -->
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'success-search' %}
+            <div class="container flash-msg">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-xl-center bg-success text-white msg">
+                        {{ msg }}
+                        <button type="button" class="btn btn-success" data-dimiss="alert", onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 <div class="container main">
     <h1 class="text-success">Animal Crossing Villagers:</h1>
 
@@ -20,6 +74,7 @@
                         <p>Birthday: {{ villager['birthday-string'] }}</p>
                         <p>Hobby: {{ villager['hobby'] }}</p>
                         <p>Catch Phrase: {{ villager['catch-phrase'] }}</p>
+                        <button type="button" class="btn btn-success font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#addVillager">ADD VILLAGER</button>
                     </div>     
                 </div>        
             </div>
@@ -27,6 +82,8 @@
         {% endfor %}
     </div>
 </div>
+
+{% include 'villager_form.html' %}
 
 
 {% endblock content %}

@@ -21,4 +21,4 @@ class VillagerForm(FlaskForm):
 
 class RemoveForm(FlaskForm):
     name = StringField('Name', validators= [DataRequired()])
-    submit_button = SubmitField('REMOVE')  
+    submit_button = SubmitField('REMOVE')
