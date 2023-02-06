@@ -16,21 +16,24 @@ def create_villager(our_user):
     found = data.fill_info()
 
     if found:
-        gender = data.gender
-        birthday = data.birthday
-        personality = data.personality
-        hobby = data.hobby
-        phrase = data.phrase
-        image = data.image
+        if Villager.query.filter_by(name=name, user_id=user_id).first():
+            return jsonify({'message': 'Cannnot add duplicates in one account.'}), 401
+        else:
+            gender = data.gender
+            birthday = data.birthday
+            personality = data.personality
+            hobby = data.hobby
+            phrase = data.phrase
+            image = data.image
 
-        villager = Villager(name, species, gender, birthday, personality, hobby, phrase, image, user_id)
+            villager = Villager(name, species, gender, birthday, personality, hobby, phrase, image, user_id)
 
-        db.session.add(villager)
-        db.session.commit()
+            db.session.add(villager)
+            db.session.commit()
 
-        response = villager_schema.dump(villager)
+            response = villager_schema.dump(villager)
 
-        return jsonify(response)
+            return jsonify(response)
     else:
         return jsonify({'message': 'Valid name and species required!'}), 401
 
